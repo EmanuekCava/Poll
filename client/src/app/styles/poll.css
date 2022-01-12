@@ -1,0 +1,143 @@
+
+.container-card-polls {
+    display: block;
+    text-align: left;
+    border: 1px solid #eee;
+    padding: 8px;
+}
+.question-polls {
+    display: inline;
+    color: #f44;
+    font-size: 30px;
+    cursor: pointer;
+}
+.question-polls:hover {
+    text-decoration: underline;
+}
+.options-all-polls {
+    display: block;
+    margin-top: 8px;
+}
+.option-all-polls {
+    margin-left: 8px;
+    font-size: 20px;
+}
+
+/* MY POLLS */
+
+.container-button-create {
+    text-align: center;
+    padding: 20px;
+}
+.button-create {
+    border: none;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 24px;
+    color: #fff;
+    background: #1f1;
+    cursor: pointer;
+}
+.button-create:hover {
+    background: #4f4;
+}
+.button-create:active {
+    background: #1f1;
+}
+.container-question-options {
+    border: 3px solid #eee;
+}
+.container-card-mypolls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    display: block;
+    text-align: left;
+}
+.question-polls-priv {
+    display: inline;
+    color: #f44;
+    font-size: 30px;
+}
+.contain-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.actions {
+    padding: 8px;
+}
+.fa-trash-alt {
+    font-size: 30px;
+    margin-right: 20px;
+    color: #f11;
+    cursor: pointer;
+}
+.fa-trash-alt:hover {
+    color: #f33;
+}
+.fa-pen {
+    font-size: 30px;
+    margin-right: 20px;
+    color: #11f;
+    cursor: pointer;
+}
+.fa-pen:hover {
+    color: #33f;
+}
+
+/* GET POLL */
+
+.container-get-poll {
+    width: 100%;
+    height: calc(100vh - 70px);
+}
+.top-get-poll {
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 55px;
+}
+.text-top {
+    font-size: 25px;
+}
+.mid-get-poll {
+    height: 65%;
+    text-align: center;
+    padding: 50px;
+}
+.question {
+    font-size: 40px;
+    font-weight: 700;
+    color: #f44;
+}
+.container-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    margin-top: 20px;
+}
+.contain-option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #eee;
+    width: 100%;
+    height: 200px;
+    cursor: pointer;
+}
+.contain-option:hover {
+    background: #eee;
+}
+.contain-option:active {
+    background: #fff;
+}
+.text-option {
+    font-size: 36px;
+    user-select: none;
+}
+.bottom-get-poll {
+    height: 25%;
+}

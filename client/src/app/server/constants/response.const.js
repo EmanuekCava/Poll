@@ -1,0 +1,6 @@
+export const LOADING = 'LOADING';
+export const SUCCESS_AUTH = 'SUCCESS_AUTH';
+export const SUCCESS_CREATE = 'SUCCESS_CREATE';
+export const ERROR_LOGIN = 'ERROR_LOGIN';
+export const ERROR_REGISTER = 'ERROR_REGISTER';
+export const ERROR_CREATE = 'ERROR_CREATE';

@@ -1,0 +1,133 @@
+:root {
+    --size-head: 70px;
+    --color-head: #0dd;
+    --color-auth-profile: #0f0
+}
+
+.container-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--size-head);
+    width: 100%;
+    background: linear-gradient(to bottom, #f44, #f11);
+}
+.text-header {
+    font-size: 40px;
+    color: #fff;
+    font-weight: 900;
+    line-height: var(--size-head);
+    margin-left: 30px;
+    cursor: pointer;
+    display: inline;
+}
+.text-header::selection {
+    background: #f11;
+}
+
+.container-buttons {
+    margin-right: 30px;
+}
+.order-buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.button-polls {
+    text-decoration: none;
+    margin-right: 30px;
+    padding: 7px;
+    color: #fff;
+    font-weight: 900;
+    width: 130px;
+    text-align: center;
+    border-bottom: 5px solid var(--color-head);
+    font-size: 24px;
+}
+.button-polls:hover {
+    transition: all ease 1.6s;
+    border-bottom: 5px solid #00f;
+}
+.button-polls:active {
+    background: #00d;
+}
+.button-polls::selection {
+    background: #f11;
+}
+.button-auth {
+    text-decoration: none;
+    padding: 7px;
+    color: #fff;
+    font-weight: 900;
+    width: 130px;
+    text-align: center;
+    border-bottom: 5px solid var(--color-head);
+    font-size: 24px;
+}
+.button-auth:hover {
+    transition: all ease 1.6s;
+    border-bottom: 5px solid var(--color-auth-profile);
+}
+.button-auth:active {
+    background: #0d0;
+}
+.button-auth::selection {
+    background: #f11;
+}
+.container-profile-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button-profile {
+    cursor: pointer;
+    padding: 7px;
+    color: #fff;
+    font-weight: 900;
+    width: 130px;
+    text-align: center;
+    font-size: 24px;
+}
+.button-profile:hover ~ .fa-sort-down {
+    color: var(--color-auth-profile);
+    transition: all ease 1.6s;
+}
+.button-profile::selection {
+    background: #f11;
+}
+.fa-sort-down {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 7px;
+    cursor: pointer;
+}
+.fa-sort-down:hover {
+    color: var(--color-auth-profile);
+    transition: all ease 1.6s;
+}
+
+.container-drop-profile {
+    border: 3px solid #eee;
+    background: #f88;
+    border-radius: 4px;
+    position: absolute;
+    top: 60px;
+    right: 40px;
+    width: 150px;
+    padding: 4px;
+}
+.text-drop-profile {
+    color: #fff;
+    font-size: 20px;
+    border-bottom: 1px solid #eee;
+    margin: 6px 5px;
+    cursor: pointer;
+}
+#my-polls:hover {
+    background: #fff;
+    color: #f88;
+}
+#logout:hover {
+    background: #fff;
+    color: #f88;
+}

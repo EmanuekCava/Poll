@@ -1,0 +1,48 @@
+
+.background-index {
+    width: 100%;
+    height: 100%;
+    background: #fdd;
+    padding: 0px 80px;
+}
+.container-index {
+    height: 100%;
+    background: #fff;
+    padding: 30px 22px;
+}
+.titles-index {
+    color: #f44;
+    font-size: 36px;
+    text-align: left;
+}
+.container-letters {
+    text-align: center;
+    margin: 18px 0px;
+}
+.image-index {
+    width: 100%;
+    border: 1px solid #eee;
+    margin-top: 8px;
+}
+.icon-index-poll {
+    border: 1px solid #eee;
+    margin-top: 8px;
+}
+.button-start {
+    color: #fff;
+    outline: none;
+    width: 230px;
+    border: 0px;
+    padding: 15px;
+    font-size: 25px;
+    cursor: pointer;
+    background: #1f1;
+    border-radius: 8px;
+    font-weight: 600;
+}
+.button-start:hover {
+    background: #4f4;
+}
+.button-start:active {
+    background: #1f1;
+}

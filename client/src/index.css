@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #101;
+  font-family: 'Roboto', 'Helverica', 'Arial', sans-serif;
+}
+
+@import url('../src/app/styles/auth.css');
+@import url('../src/app/styles/index.css');
+@import url('../src/app/styles/header.css');
+@import url('../src/app/styles/poll.css');
+@import url('../src/app/styles/create.css');
+@import url('../src/app/styles/message.css');

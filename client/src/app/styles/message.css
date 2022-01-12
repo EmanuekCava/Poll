@@ -1,0 +1,78 @@
+
+/* LOADING */
+
+.container-loading {
+    position: absolute;   
+    z-index: 10;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.round-red {
+    width: 178px;
+    height: 178px;
+    background: #f11;
+    border-radius: 50%;
+}
+.short-white {
+    position: relative;
+    background: #fff;;
+    width: 22px;
+    height: 30px;
+    top: 100px;
+    left: 35px;
+}
+.medium-white {
+    position: relative;
+    background: #fff;
+    width: 22px;
+    height: 65px;
+    left: 121px;
+    top: -65px;
+}
+.big-white {
+    position: relative;
+    background: #fff;;
+    width: 22px;
+    height: 100px;
+    left: 78px;
+}
+
+/* ERROR */
+
+.container-error {
+    position: absolute;
+    background: #f44;
+    padding: 6px 12px;
+    border-radius: 12px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 480px;
+}
+.text-message {
+    color: #fff;
+    font-size: 18px;
+}
+.close-message {
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    display: inline;
+}
+.container-success {
+    background: #4f4;
+    padding: 6px 12px;
+    border-radius: 12px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 415px;
+}
