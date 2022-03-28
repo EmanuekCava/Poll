@@ -4,7 +4,8 @@ import {
     GETPOLL,
     CREATE_POLL,
     REMOVE_POLL,
-    OPTION_ONE
+    OPTION_ONE,
+    OPTION_TWO
 } from "../constants/poll.const";
 import {
     LOADING,
@@ -145,18 +146,44 @@ export const removePoll = (id, token) => async (dispatch) => {
 
 }
 
-export const chooseOptionOne = (newLike, id, token) => async (dispatch) => {
+export const chooseOptionOne = (pollData, id, token, user, setVoted) => async (dispatch) => {
 
     try {
 
-        await pollApi.chooseOptionOneApi(null, id, token)
+        await pollApi.chooseOptionOneApi(pollData, id, token)
 
         dispatch({
             type: OPTION_ONE,
-            payload: newLike
+            payload: {
+                pollData,
+                user
+            }
         })
 
-        console.log(newLike);
+        setVoted(true)
+        
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+
+export const chooseOptionTwo = (pollData, id, token, user, setVoted) => async (dispatch) => {
+
+    try {
+
+        await pollApi.chooseOptionTwoApi(pollData, id, token)
+
+        dispatch({
+            type: OPTION_TWO,
+            payload: {
+                pollData,
+                user
+            }
+        })
+
+        setVoted(true)
         
     } catch (error) {
         console.log(error);

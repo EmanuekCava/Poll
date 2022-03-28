@@ -2,15 +2,13 @@ import { Request, Response } from 'express'
 
 import Poll, { IPoll } from '../data/models/poll'
 
-// import { UserRequest } from '../interface/request'
-
-export const allPolls = async (req: any, res: Response) => {
+export const allPolls = async (req: any, res: Response): Promise<Response> => {
 
     try {
 
         const showAllPolls = await Poll.find()
 
-        res.json(showAllPolls)
+        return res.status(200).json(showAllPolls)
 
     } catch (error: any) {
         return res.status(500).json({ message: error.message })
@@ -18,13 +16,13 @@ export const allPolls = async (req: any, res: Response) => {
 
 }
 
-export const polls = async (req: any, res: Response) => {
+export const polls = async (req: any, res: Response): Promise<Response> => {
 
     try {
 
         const showPolls = await Poll.find({ nickId: req.user })
 
-        res.json(showPolls)
+        return res.status(200).json(showPolls)
 
     } catch (error: any) {
         return res.status(500).json({ message: error.message })
@@ -32,7 +30,7 @@ export const polls = async (req: any, res: Response) => {
 
 }
 
-export const getPoll = async (req: Request, res: Response) => {
+export const getPoll = async (req: Request, res: Response): Promise<Response> => {
 
     const { id } = req.params;
 
@@ -40,7 +38,7 @@ export const getPoll = async (req: Request, res: Response) => {
 
         const showPoll = await Poll.findById(id).populate('nickId', 'nick')
 
-        res.json(showPoll)
+        return res.status(200).json(showPoll)
 
     } catch (error: any) {
         return res.status(500).json({ message: error.message })
@@ -48,7 +46,7 @@ export const getPoll = async (req: Request, res: Response) => {
 
 }
 
-export const createPoll = async (req: any, res: Response) => {
+export const createPoll = async (req: any, res: Response): Promise<Response> => {
 
     const { question, optionOne, optionTwo } = req.body;
 
@@ -63,7 +61,7 @@ export const createPoll = async (req: any, res: Response) => {
 
         const savePoll = await newPoll.save()
 
-        res.json({
+        return res.status(200).json({
             poll: savePoll,
             message: "The poll was uploaded successfully."
         })
@@ -74,7 +72,7 @@ export const createPoll = async (req: any, res: Response) => {
 
 }
 
-export const removePoll = async (req: any, res: Response) => {
+export const removePoll = async (req: any, res: Response): Promise<Response> => {
 
     const { id } = req.params;
 
@@ -88,7 +86,7 @@ export const removePoll = async (req: any, res: Response) => {
 
         await Poll.findByIdAndDelete(id)
 
-        res.json({ message: "The poll was removed successfully." })
+        return res.status(200).json({ message: "The poll was removed successfully." })
 
     } catch (error: any) {
         return res.status(500).json({ message: error.message })
@@ -96,57 +94,43 @@ export const removePoll = async (req: any, res: Response) => {
 
 }
 
-export const updatePoll = async (req: Request, res: Response) => {
-
-    const { question, options } = req.body;
-    const { id } = req.params;
-
-    try {
-
-        const pollUpdated = {
-            question,
-            options
-        }
-
-        const savePollUpdated = await Poll.findByIdAndUpdate(id, pollUpdated, {
-            new: true
-        })
-
-        res.json({
-            poll: savePollUpdated,
-            message: "The poll was updated successfully."
-        })
-
-    } catch (error: any) {
-        return res.status(500).json({ message: error.message })
-    }
-
-}
-
-export const chooseOptionOne = async (req: any, res: Response) => {
+export const chooseOptionOne = async (req: any, res: Response): Promise<Response> => {
 
     const { id } = req.params;
 
     try {
 
-        // const pollLiked = await Poll.find({ _id: id, nickId: req.user })
-
-        // if(pollLiked?.optionOne.votes.length > 0) {
-        //     return res.status(401).json({ message: "You have already liked this poll." })
-        // }
-
-        const poll = await Poll.findById(id)
-
-        const pollVote = poll?.optionOne.votes.push(req.user)
-
-        const data = await Poll.findByIdAndUpdate(id, {
-            pollVote
+        const pollUpdate = await Poll.findByIdAndUpdate(id, {
+            $push: {
+                "optionOne.votes": req.user
+            }
         }, {
             new: true
         })
 
-        console.log(data)
-        res.json("Like")
+        return res.status(200).json(pollUpdate)
+
+    } catch (error: any) {
+        return res.status(500).json({ message: error.message })
+    }
+
+}
+
+export const chooseOptionTwo = async (req: any, res: Response): Promise<Response> => {
+
+    const { id } = req.params;
+
+    try {
+
+        const pollUpdate = await Poll.findByIdAndUpdate(id, {
+            $push: {
+                "optionTwo.votes": req.user
+            }
+        }, {
+            new: true
+        })
+
+        return res.status(200).json(pollUpdate)
 
     } catch (error: any) {
         return res.status(500).json({ message: error.message })

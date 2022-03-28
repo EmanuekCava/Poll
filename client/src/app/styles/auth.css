@@ -8,7 +8,9 @@
     height: calc(100vh - 70px);
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 /* FORM */
@@ -21,6 +23,7 @@
 .title-separator {
     height: 100%;
     width: 100%;
+    user-select: none;
 }
 .container-error-login {
     width: 75%;
@@ -35,6 +38,7 @@
 .text-title-auth {
     font-size: 40px;
     color: var(--text-color);
+    user-select: none;
 }
 .form-contained {
     height: 80%;
@@ -76,6 +80,7 @@
     border: none;
     background: var(--verify-color);
     color: #fff;
+    user-select: none;
 }
 .button-auth-form:hover {
     background: #4f4;
@@ -144,6 +149,7 @@
 .text-verify-account {
     font-size: 28px;
     color: var(--text-color);
+    user-select: none;
 }
 .advertising {
     height: 68%;
@@ -159,6 +165,7 @@
     color: var(--verify-color);
     cursor: pointer;
     margin-left: 10px;
+    user-select: none;
 }
 
 

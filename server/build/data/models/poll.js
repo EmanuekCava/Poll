@@ -10,8 +10,30 @@ const pollSchema = new mongoose_1.Schema({
         minlength: 3,
         maxlength: 120
     },
-    options: [],
-    nickId: ObjectId
+    optionOne: {
+        option: {
+            type: String,
+            required: true,
+            trim: true
+        },
+        votes: [{
+                type: ObjectId, ref: 'User'
+            }]
+    },
+    optionTwo: {
+        option: {
+            type: String,
+            required: true,
+            trim: true
+        },
+        votes: [{
+                type: ObjectId, ref: 'User'
+            }]
+    },
+    nickId: {
+        type: ObjectId,
+        ref: 'User'
+    }
 }, {
     timestamps: true,
     versionKey: false

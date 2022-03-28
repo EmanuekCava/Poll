@@ -12,13 +12,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updatePoll = exports.removePoll = exports.createPoll = exports.getPoll = exports.polls = exports.allPolls = void 0;
+exports.chooseOptionTwo = exports.chooseOptionOne = exports.removePoll = exports.createPoll = exports.getPoll = exports.polls = exports.allPolls = void 0;
 const poll_1 = __importDefault(require("../data/models/poll"));
-// import { UserRequest } from '../interface/request'
 const allPolls = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const showAllPolls = yield poll_1.default.find();
-        res.json(showAllPolls);
+        return res.status(200).json(showAllPolls);
     }
     catch (error) {
         return res.status(500).json({ message: error.message });
@@ -27,8 +26,8 @@ const allPolls = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.allPolls = allPolls;
 const polls = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const showAllPolls = yield poll_1.default.find({ nickId: req.user });
-        res.json(showAllPolls);
+        const showPolls = yield poll_1.default.find({ nickId: req.user });
+        return res.status(200).json(showPolls);
     }
     catch (error) {
         return res.status(500).json({ message: error.message });
@@ -38,8 +37,8 @@ exports.polls = polls;
 const getPoll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
-        const showPoll = yield poll_1.default.findById(id);
-        res.json(showPoll);
+        const showPoll = yield poll_1.default.findById(id).populate('nickId', 'nick');
+        return res.status(200).json(showPoll);
     }
     catch (error) {
         return res.status(500).json({ message: error.message });
@@ -47,15 +46,16 @@ const getPoll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.getPoll = getPoll;
 const createPoll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { question, options } = req.body;
+    const { question, optionOne, optionTwo } = req.body;
     try {
         const newPoll = new poll_1.default({
             question,
-            options,
+            optionOne,
+            optionTwo,
             nickId: req.user
         });
         const savePoll = yield newPoll.save();
-        res.json({
+        return res.status(200).json({
             poll: savePoll,
             message: "The poll was uploaded successfully."
         });
@@ -68,32 +68,49 @@ exports.createPoll = createPoll;
 const removePoll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
+        const pollUser = yield poll_1.default.findOne({ _id: id, user: req.user });
+        if (!pollUser) {
+            return res.status(401).json({ message: "You cannot delete this poll." });
+        }
         yield poll_1.default.findByIdAndDelete(id);
-        res.json({ message: "The poll was removed successfully." });
+        return res.status(200).json({ message: "The poll was removed successfully." });
     }
     catch (error) {
         return res.status(500).json({ message: error.message });
     }
 });
 exports.removePoll = removePoll;
-const updatePoll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { question, options } = req.body;
+const chooseOptionOne = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
-        const pollUpdated = {
-            question,
-            options
-        };
-        const savePollUpdated = yield poll_1.default.findByIdAndUpdate(id, pollUpdated, {
+        const pollUpdate = yield poll_1.default.findByIdAndUpdate(id, {
+            $push: {
+                "optionOne.votes": req.user
+            }
+        }, {
             new: true
         });
-        res.json({
-            poll: savePollUpdated,
-            message: "The poll was updated successfully."
-        });
+        return res.status(200).json(pollUpdate);
     }
     catch (error) {
         return res.status(500).json({ message: error.message });
     }
 });
-exports.updatePoll = updatePoll;
+exports.chooseOptionOne = chooseOptionOne;
+const chooseOptionTwo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    try {
+        const pollUpdate = yield poll_1.default.findByIdAndUpdate(id, {
+            $push: {
+                "optionTwo.votes": req.user
+            }
+        }, {
+            new: true
+        });
+        return res.status(200).json(pollUpdate);
+    }
+    catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+});
+exports.chooseOptionTwo = chooseOptionTwo;

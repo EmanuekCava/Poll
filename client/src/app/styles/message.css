@@ -59,6 +59,7 @@
 .text-message {
     color: #fff;
     font-size: 18px;
+    user-select: none;
 }
 .close-message {
     color: #fff;

@@ -4,11 +4,8 @@ const { ObjectId } = Types;
 
 export interface IPoll extends Document {
     question: string;
-    optionOne: {
-        option: string;
-        votes: any[];
-    };
-    optionTwo: object;
+    optionOne?: any;
+    optionTwo?: any;
 }
 
 const pollSchema = new Schema({
@@ -20,13 +17,21 @@ const pollSchema = new Schema({
         maxlength: 120
     },
     optionOne: {
-        option: String,
+        option: {
+            type: String,
+            required: true,
+            trim: true
+        },
         votes: [{
             type: ObjectId, ref: 'User'
         }]
     },
     optionTwo: {
-        option: String,
+        option: {
+            type: String,
+            required: true,
+            trim: true
+        },
         votes: [{
             type: ObjectId, ref: 'User'
         }]

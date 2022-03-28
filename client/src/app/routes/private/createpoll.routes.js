@@ -33,11 +33,11 @@ const CreatePoll = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setPollData({...pollData, [name]: value})
+        setPollData({ ...pollData, [name]: value })
     }
     const handleSumbit = (e) => {
         e.preventDefault()
-        
+
         const poll = {
             question,
             optionOne: {
@@ -49,50 +49,9 @@ const CreatePoll = () => {
                 votes: []
             }
         }
-        
+
         dispatch(createPoll(poll, user.auth.token, navigate))
     }
-
-    /*
-    const addOption = () => {
-        var formCreate = document.getElementById("form-create")
-        var separator = document.createElement("div")
-        var inputOption = document.createElement("input")
-
-        if (formCreate.length > 7) {
-            return;
-        }
-
-        optionNumber += 1;
-        currentOption = `OPTION ${optionNumber}`
-
-        separator.className = "separator";
-        inputOption.name = `option${optionNumber}`;
-        inputOption.className = "input-option";
-        inputOption.type = "text";
-        inputOption.placeholder = currentOption;
-        inputOption.onchange = handleChange;
-
-        separator.appendChild(inputOption)
-        formCreate.appendChild(separator)
-    }
-    */
-   /*
-    const removeOption = () => {
-        var formCreate = document.getElementById("form-create")
-
-        if (formCreate.length === 4) {
-            return;
-        }
-
-        console.log(optionNumber);
-        optionNumber -= 1;
-        console.log(optionNumber);
-        currentOption = `OPTION ${optionNumber}`;
-
-        formCreate.removeChild(formCreate.lastElementChild)
-    }
-    */
 
     return (
         <>
@@ -108,27 +67,17 @@ const CreatePoll = () => {
                         <div className="form-create-contained">
                             <form className="form-create" id="form-create" onSubmit={handleSumbit}>
                                 <div className="separator">
-                                    <input type="text" name="question" className="input-auth" placeholder="QUESTION" value={question} onChange={handleChange} autoComplete="off"/>
+                                    <input type="text" name="question" className="input-auth" placeholder="QUESTION" value={question} onChange={handleChange} autoComplete="off" />
                                 </div>
                                 <div className="separator">
-                                    <input type="text" name="optionOne" className="input-option" placeholder={firstOption} value={optionOne} onChange={handleChange} autoComplete="off"/>
+                                    <input type="text" name="optionOne" className="input-option" placeholder={firstOption} value={optionOne} onChange={handleChange} autoComplete="off" />
                                 </div>
                                 <div className="separator">
-                                    <input type="text" name="optionTwo" className="input-option" placeholder={currentOption} value={optionTwo} onChange={handleChange} autoComplete="off"/>
+                                    <input type="text" name="optionTwo" className="input-option" placeholder={currentOption} value={optionTwo} onChange={handleChange} autoComplete="off" />
                                 </div>
                             </form>
-                            <div>
-                                <div className="actions-create">
-                                    <div className="separator">
-                                        <i className="fas fa-plus" /*onClick={addOption}*/> ADD OPTION</i>
-                                    </div>
-                                    <div className="separator">
-                                        <i className="fas fa-minus" /*onClick={removeOption}*/> REMOVE OPTION</i>
-                                    </div>
-                                </div>
-                                <div className="actions-create-button">
-                                    <button className="button-auth-form" form="form-create">CREATE</button>
-                                </div>
+                            <div className="actions-create-button">
+                                <button className="button-auth-form" form="form-create">CREATE</button>
                             </div>
                         </div>
                     </div>

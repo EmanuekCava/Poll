@@ -28,7 +28,7 @@ const GetPoll = () => {
             {
                 user.loggedIn ? (
                     <div className="container-get-poll">
-                        <GetPollPrivate poll={showGetPoll} params={params} />
+                        <GetPollPrivate poll={showGetPoll} />
                     </div>
                 ) : (
                     <Navigate replace to="/auth" />

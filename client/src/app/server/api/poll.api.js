@@ -18,6 +18,7 @@ export const getPollApi = (id, token) => api.get(`/polls/${id}`, {
 
 export const createPollApi = (pollData, token) => api.post('/createpoll', pollData, {
     headers: {
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`
     }
 })
@@ -29,6 +30,12 @@ export const removePollApi = (id, token) => api.delete(`/removepoll/${id}`, {
 })
 
 export const chooseOptionOneApi = (pollData, id, token) => api.patch(`/chooseoptionone/${id}`, pollData, {
+    headers: {
+        Authorization: `Bearer ${token}`
+    }
+})
+
+export const chooseOptionTwoApi = (pollData, id, token) => api.patch(`/chooseoptiontwo/${id}`, pollData, {
     headers: {
         Authorization: `Bearer ${token}`
     }

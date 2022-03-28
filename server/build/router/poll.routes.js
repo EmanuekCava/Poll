@@ -32,5 +32,6 @@ router.get('/polls', auth_1.default, pollController.polls);
 router.get('/polls/:id', auth_1.default, pollController.getPoll);
 router.post('/createpoll', auth_1.default, validpoll_1.default, pollController.createPoll);
 router.delete('/removepoll/:id', auth_1.default, pollController.removePoll);
-router.put('/updatepoll/:id', auth_1.default, pollController.updatePoll);
+router.patch('/chooseoptionone/:id', auth_1.default, pollController.chooseOptionOne);
+router.patch('/chooseoptiontwo/:id', auth_1.default, pollController.chooseOptionTwo);
 exports.default = router;

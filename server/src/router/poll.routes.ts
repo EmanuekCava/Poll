@@ -15,7 +15,7 @@ router.post('/createpoll', auth, validPoll, pollController.createPoll)
 
 router.delete('/removepoll/:id', auth, pollController.removePoll)
 
-router.put('/updatepoll/:id', auth, pollController.updatePoll)
 router.patch('/chooseoptionone/:id', auth, pollController.chooseOptionOne)
+router.patch('/chooseoptiontwo/:id', auth, pollController.chooseOptionTwo)
 
 export default router

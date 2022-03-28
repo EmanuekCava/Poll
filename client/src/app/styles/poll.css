@@ -10,6 +10,7 @@
     color: #f44;
     font-size: 30px;
     cursor: pointer;
+    user-select: none;
 }
 .question-polls:hover {
     text-decoration: underline;
@@ -17,10 +18,12 @@
 .options-all-polls {
     display: block;
     margin-top: 8px;
+    user-select: none;
 }
 .option-all-polls {
     margin-left: 8px;
     font-size: 20px;
+    user-select: none;
 }
 
 /* MY POLLS */
@@ -37,6 +40,7 @@
     color: #fff;
     background: #1f1;
     cursor: pointer;
+    user-select: none;
 }
 .button-create:hover {
     background: #4f4;
@@ -54,36 +58,22 @@
     display: block;
     text-align: left;
 }
-.question-polls-priv {
-    display: inline;
-    color: #f44;
-    font-size: 30px;
-}
 .contain-actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.actions {
-    padding: 8px;
-}
+
 .fa-trash-alt {
     font-size: 30px;
     margin-right: 20px;
     color: #f11;
     cursor: pointer;
+    user-select: none;
+    margin: 8px;
 }
 .fa-trash-alt:hover {
     color: #f33;
-}
-.fa-pen {
-    font-size: 30px;
-    margin-right: 20px;
-    color: #11f;
-    cursor: pointer;
-}
-.fa-pen:hover {
-    color: #33f;
 }
 
 /* GET POLL */
@@ -101,6 +91,7 @@
 }
 .text-top {
     font-size: 25px;
+    user-select: none;
 }
 .mid-get-poll {
     height: 65%;
@@ -111,6 +102,7 @@
     font-size: 40px;
     font-weight: 700;
     color: #f44;
+    user-select: none;
 }
 .container-options {
     display: flex;
@@ -136,6 +128,7 @@
 }
 .text-option {
     font-size: 36px;
+    user-select: none;
     user-select: none;
 }
 .bottom-get-poll {

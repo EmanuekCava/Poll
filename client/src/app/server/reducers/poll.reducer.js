@@ -4,7 +4,8 @@ import {
     GETPOLL,
     CREATE_POLL,
     REMOVE_POLL,
-    OPTION_ONE
+    OPTION_ONE,
+    OPTION_TWO
 } from "../constants/poll.const";
 
 const initialState = {
@@ -120,19 +121,35 @@ const pollReducer = (state = initialState, action) => {
         case OPTION_ONE:
             return {
                 ...state,
-                allPolls: [],
-                myPolls: [],
                 getPoll: {
                     optionOne: {
-                        option: "",
-                        votes: state.getPoll.optionOne.votes.map(poll => poll._id === action.payload.id ? action.payload : poll)
+                        option: action.payload.pollData.optionOne.option,
+                        votes: [...state.getPoll.optionOne.votes, action.payload.user._id]
                     },
                     optionTwo: {
-                        option: "",
-                        votes: []
+                        option: action.payload.pollData.optionTwo.option,
+                        votes: action.payload.pollData.optionTwo.votes,
                     },
                     nickId: {
-                        nick: ""
+                        nick: action.payload.pollData.nickId.nick
+                    }
+                }
+            }
+
+        case OPTION_TWO:
+            return {
+                ...state,
+                getPoll: {
+                    optionOne: {
+                        option: action.payload.pollData.optionOne.option,
+                        votes: action.payload.pollData.optionOne.votes,
+                    },
+                    optionTwo: {
+                        option: action.payload.pollData.optionTwo.option,
+                        votes: [...state.getPoll.optionTwo.votes, action.payload.user._id]
+                    },
+                    nickId: {
+                        nick: action.payload.pollData.nickId.nick
                     }
                 }
             }

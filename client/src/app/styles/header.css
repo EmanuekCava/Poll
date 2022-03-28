@@ -20,6 +20,7 @@
     margin-left: 30px;
     cursor: pointer;
     display: inline;
+    user-select: none;
 }
 .text-header::selection {
     background: #f11;
@@ -43,6 +44,7 @@
     text-align: center;
     border-bottom: 5px solid var(--color-head);
     font-size: 24px;
+    user-select: none;
 }
 .button-polls:hover {
     transition: all ease 1.6s;
@@ -63,6 +65,7 @@
     text-align: center;
     border-bottom: 5px solid var(--color-head);
     font-size: 24px;
+    user-select: none;
 }
 .button-auth:hover {
     transition: all ease 1.6s;
@@ -87,6 +90,7 @@
     width: 130px;
     text-align: center;
     font-size: 24px;
+    user-select: none;
 }
 .button-profile:hover ~ .fa-sort-down {
     color: var(--color-auth-profile);
@@ -122,6 +126,7 @@
     border-bottom: 1px solid #eee;
     margin: 6px 5px;
     cursor: pointer;
+    user-select: none;
 }
 #my-polls:hover {
     background: #fff;

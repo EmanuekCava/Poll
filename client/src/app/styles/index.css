@@ -4,6 +4,7 @@
     height: 100%;
     background: #fdd;
     padding: 0px 80px;
+    user-select: none;
 }
 .container-index {
     height: 100%;

@@ -6,7 +6,7 @@ import User, { IUser } from '../data/models/user'
 
 const { JWT } = process.env;
 
-export const register = async (req: Request, res: Response) => {
+export const register = async (req: Request, res: Response): Promise<Response> => {
 
     const { nick, email, password } = req.body;
     
@@ -26,7 +26,7 @@ export const register = async (req: Request, res: Response) => {
             expiresIn: "72h"
         })
 
-        res.json({
+        return res.status(200).json({
             user: saveUser,
             message: "Welcome!",
             token
@@ -37,7 +37,7 @@ export const register = async (req: Request, res: Response) => {
     }
 
 }
-export const login = async (req: Request, res: Response) => {
+export const login = async (req: Request, res: Response): Promise<Response> => {
 
     const { nick, password } = req.body
 
@@ -59,7 +59,7 @@ export const login = async (req: Request, res: Response) => {
             expiresIn: "7d"
         })
 
-        res.json({
+        return res.status(200).json({
             user,
             message: "Welcome again!",
             token
@@ -71,13 +71,13 @@ export const login = async (req: Request, res: Response) => {
 
 }
 
-export const allUsers = async (req: Request, res: Response) => {
+export const allUsers = async (req: Request, res: Response): Promise<Response> => {
     
     try {
 
         const showAllUsers = await User.find()
 
-        res.json(showAllUsers)
+        return res.status(200).json(showAllUsers)
         
     } catch (error: any) {
         return res.status(500).json({ message: error.message })
@@ -92,14 +92,14 @@ export const getUser = async (req: Request, res: Response) => {
 
         const showUser = await User.findById(id)
 
-        res.json(showUser)
+        return res.status(200).json(showUser)
         
     } catch (error: any) {
         return res.status(500).json({ message: error.message })
     }
 
 }
-export const removeUser = async (req: Request, res: Response) => {
+export const removeUser = async (req: Request, res: Response): Promise<Response> => {
 
     const { id } = req.params;
 
@@ -107,7 +107,7 @@ export const removeUser = async (req: Request, res: Response) => {
 
         await User.findByIdAndDelete(id)
 
-        res.json({
+        return res.status(200).json({
             message: "User removed successfully."
         })
         

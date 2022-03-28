@@ -30,7 +30,7 @@ const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const token = jsonwebtoken_1.default.sign({ id: saveUser._id }, `${JWT}`, {
             expiresIn: "72h"
         });
-        res.json({
+        return res.status(200).json({
             user: saveUser,
             message: "Welcome!",
             token
@@ -55,7 +55,7 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const token = jsonwebtoken_1.default.sign({ id: user._id }, `${JWT}`, {
             expiresIn: "7d"
         });
-        res.json({
+        return res.status(200).json({
             user,
             message: "Welcome again!",
             token
@@ -69,7 +69,7 @@ exports.login = login;
 const allUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const showAllUsers = yield user_1.default.find();
-        res.json(showAllUsers);
+        return res.status(200).json(showAllUsers);
     }
     catch (error) {
         return res.status(500).json({ message: error.message });
@@ -80,7 +80,7 @@ const getUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
         const showUser = yield user_1.default.findById(id);
-        res.json(showUser);
+        return res.status(200).json(showUser);
     }
     catch (error) {
         return res.status(500).json({ message: error.message });
@@ -91,7 +91,7 @@ const removeUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     const { id } = req.params;
     try {
         yield user_1.default.findByIdAndDelete(id);
-        res.json({
+        return res.status(200).json({
             message: "User removed successfully."
         });
     }
