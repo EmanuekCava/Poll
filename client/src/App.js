@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Provider } from "react-redux";
 
 // COMPONENTS
@@ -32,6 +32,7 @@ function App() {
           <Route path="/mypolls" element={<MyPolls />} />
           <Route path="/polls/:id" element={<GetPoll />} />
           <Route path="/create" element={<CreatePoll />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Provider>
     </BrowserRouter>
